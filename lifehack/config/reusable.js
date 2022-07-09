@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, TextInput } from "react-native";
+import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
 import colours from "./colours";
 
 export function PinkTextInput({
@@ -24,8 +24,58 @@ export function PinkTextInput({
   );
 }
 
+export function BlueButton({ text, onPress, style }) {
+  return (
+    <>
+      <TouchableOpacity
+        activeOpacity={0.7}
+        style={[styles.blueButton, style]}
+        onPress={onPress}
+      >
+        <Text>{text}</Text>
+      </TouchableOpacity>
+    </>
+  );
+}
+
+export function Footer({ onPress, text, desc }) {
+  return (
+    <View style={styles.footerView}>
+      <Text style={styles.footerText}>
+        {desc}{" "}
+        <Text onPress={onPress} style={styles.footerLink}>
+          {text}
+        </Text>
+      </Text>
+    </View>
+  );
+}
+
 const styles = StyleSheet.create({
   pinkTextInput: {
     color: colours.cameoPink,
+  },
+  blackButton: {
+    width: 130,
+    height: 40,
+    borderRadius: 999,
+    margin: 2,
+    alignSelf: "center",
+    alignItems: "center",
+    justifyContent: "center",
+    backgroundColor: colours.paleCerulean,
+  },
+  footerView: {
+    alignItems: "center",
+    marginTop: 20,
+  },
+  footerText: {
+    fontSize: 16,
+    color: "#2e2e2d",
+  },
+  footerLink: {
+    color: "#788eec",
+    fontWeight: "bold",
+    fontSize: 16,
   },
 });
