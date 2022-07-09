@@ -1,82 +1,84 @@
-
-import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "@react-navigation/stack";
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import React, { useState } from "react";
-import { StyleSheet, View, Text, TouchableOpacity, TextInput} from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
-import Ionicons from 'react-native-vector-icons/Ionicons';
-import { db, auth } from '../config/firebase.js'
-export default function FoodInput() { 
+import {
+  StyleSheet,
+  View,
+  Text,
+  TouchableOpacity,
+  TextInput,
+} from "react-native";
+import Ionicons from "react-native-vector-icons/Ionicons";
+import { db, auth } from "../config/firebase.js";
+export default function FoodInput() {
+  const [food, setFood] = useState("");
+  const [expiry, setExpiry] = useState("");
+  const [price, setPrice] = useState("");
+  const [quantity, setQuantity] = useState("");
 
-  
-  const [food, setFood] = useState('');
-  const [expiry, setExpiry] = useState('');
-  const [price, setPrice] = useState('');
-  const [quantity, setQuantity] = useState('');
-  const { currentUser } = auth;
- 
   const onSubmitHandler = async () => {
+    try {
+      db.collection("users")
+        .doc(auth.currentUser.uid)
+        .collection("current")
+        .doc()
+        .set({
+          food: food,
+          expiry: expiry,
+          price: price,
+          quantity: quantity,
+          eaten: false,
+        });
 
-      try {
-          const foodRef = await db.collection, {
-              food: food,
-              expiry: expiry,
-              price: price,
-              quantity: quantity,
-              username: currentUser.displayName,
-              profileImg: currentUser.photoURL,
-              timestamp: serverTimestamp(),
-              email: currentUser.email,
-          });
+      console.log("onSubmitHandler success");
 
-          console.log('onSubmitHandler success', foodRef.id);
-          
-          clearForm();
-      } catch (err) {
-          console.log('onSubmitHandler failure', err);
-      }
+      clearForm();
+    } catch (err) {
+      console.log("onSubmitHandler failure", err);
+    }
   };
 
   const clearForm = () => {
-    setFood('');
-    setExpiry('');
-    setPrice('');
-    setQuantity('');
+    setFood("");
+    setExpiry("");
+    setPrice("");
+    setQuantity("");
     Keyboard.dismiss();
-};
+  };
 
-    return (
-      <View >
-        <View style={styles.circle}></View>
-        <View style={styles.container}>
-          <Ionicons name="restaurant-outline" color="#95B8D1" size="35" />
-          <Text style={styles.header}>Key in your food items!</Text>
-        </View>
-        <TextInput style={styles.box} 
-                   placeholder="Food Item"
-                   onChangeText={setFood}
-                   value={food}>
-        </TextInput>
-        <TextInput style={styles.box} 
-                   placeholder="Expiry Date"
-                   onChangeText={setExpiry}
-                   value={expiry}>
-        </TextInput>
-        <TextInput style={styles.box} 
-                   placeholder="Price"
-                   onChangeText={setPrice}
-                   value={price}>
-        </TextInput>
-        <TextInput style={styles.box} 
-                   placeholder="Quantity"
-                   onChangeText={setQuantity}
-                   value={quantity}>
-        </TextInput>
-        <TouchableOpacity style={styles.add} onPress={onSubmitHandler}>
-          <Ionicons name="add-circle" color="#95B8D1" size="65" />
-        </TouchableOpacity>
-
+  return (
+    <View>
+      <View style={styles.circle}></View>
+      <View style={styles.container}>
+        <Ionicons name="restaurant-outline" color="#95B8D1" size="35" />
+        <Text style={styles.header}>Key in your food items!</Text>
+      </View>
+      <TextInput
+        style={styles.box}
+        placeholder="Food Item"
+        onChangeText={setFood}
+        value={food}
+      ></TextInput>
+      <TextInput
+        style={styles.box}
+        placeholder="Expiry Date"
+        onChangeText={setExpiry}
+        value={expiry}
+      ></TextInput>
+      <TextInput
+        style={styles.box}
+        placeholder="Price"
+        onChangeText={setPrice}
+        value={price}
+      ></TextInput>
+      <TextInput
+        style={styles.box}
+        placeholder="Quantity"
+        onChangeText={setQuantity}
+        value={quantity}
+      ></TextInput>
+      <TouchableOpacity style={styles.add} onPress={onSubmitHandler}>
+        <Ionicons name="add-circle" color="#95B8D1" size="65" />
+      </TouchableOpacity>
+    </View>
   );
 }
 
@@ -122,3 +124,4 @@ const styles = StyleSheet.create({
     marginTop: 20,
   },
 });
+
