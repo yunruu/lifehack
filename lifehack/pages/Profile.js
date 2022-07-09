@@ -1,4 +1,3 @@
-import React from "react";
 import React, { useState } from "react";
 import { auth, db } from "../config/Firebase";
 import { BlueButton } from "../config/reusable";
@@ -16,15 +15,20 @@ function Profile({ navigation }) {
       .catch((error) => alert(error.message));
   };
 
+  // const points = db.collection("users").doc(auth.currentUser.uid).collection("points").onSnapshot((querySnapShot) =>
+
   return (
     <View style={styles.container}>
         <BlueButton 
             style={styles.editProfileButton}
             text='Edit Profile'
-            onPress={() => navigation.navigate("EditProfileScreen")}
+            textStyle={styles.editProfileText}
+            onPress={() => {
+              navigation.navigate("EditProfileScreen")}
+            }
         />
         <StatusBar style="auto" />
-        <Image style={styles.displayPic} source={require('../assets/icon.png')}/>
+        <Image style={styles.displayPic} source={require('../assets/astro.jpg')}/>
         <Text style={styles.username}> Hello, {auth.currentUser.displayName}</Text> 
 
         <Text style={styles.profileText}> Points: 50 </Text> 
@@ -33,6 +37,7 @@ function Profile({ navigation }) {
         style={styles.logoutButton} 
         text={"LOG OUT"} 
         onPress={() => handleLogout()} 
+        textStyle={styles.logoutText}
       />
     </View>
   );
@@ -81,9 +86,18 @@ const styles = StyleSheet.create({
     paddingHorizontal: 10,
     marginHorizontal: 5,
     marginVertical: 40,
+  },
+  logoutText: {
+    color: "#fff",
     fontSize: 20,
     fontWeight: 'bold',
+    backgroundColor: '#D6EADF',
+    paddingVertical: -1, 
+    textAlign: 'center',
+    borderRadius: 900,
+    marginBottom: 0,
   },
+
   editProfileButton: {
     borderColor: '#D6EADF',
     backgroundColor: '#fff',
@@ -95,11 +109,12 @@ const styles = StyleSheet.create({
     width: 110
   },
 
-  userBtnWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
-    marginBottom: 10,
+  editProfileText: {
+    backgroundColor: '#fff',
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginLeft: 0,
+    color: '#EAC4D5'
   },
   userInfoWrapper: {
     flexDirection: 'row',

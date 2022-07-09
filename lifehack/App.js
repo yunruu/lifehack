@@ -25,6 +25,18 @@ function MyStack() {
   );
 }
 
+function ProfileChange() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Profile"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="ProfilePage" component={Profile} />
+      <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
+    </Stack.Navigator>
+  );
+}
+
 function MyTabs() {
   return (
     <Tab.Navigator>
@@ -42,17 +54,7 @@ function MyTabs() {
   );
 }
 
-function ProfileChange() {
-  return (
-    <Stack.Navigator
-      initialRouteName="Profile"
-      screenOptions={{ headerShown: false }}
-    >
-      <Stack.Screen name="ProfilePage" component={Profile} />
-      <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
-    </Stack.Navigator>
-  );
-}
+
 
 export default function App() {
   return (
