@@ -7,7 +7,16 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import EditProfileScreen from "./pages/EditProfileScreen";
+
+import FoodInput from "./pages/FoodInput";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+import Ionicons from "react-native-vector-icons/Ionicons";
+
+import CurrentFood from "./pages/CurrentFood";
+import ExpiredFood from "./pages/ExpiredFood";
+import FunFact from "./pages/FunFact";
+import colours from "./config/colours";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -20,6 +29,7 @@ function MyStack() {
     >
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={SignUp} />
+      <Stack.Screen name="FoodInput" component={FoodInput} />
       <Stack.Screen name="ProfilePage" component={MyTabs} />
     </Stack.Navigator>
   );
@@ -37,12 +47,77 @@ function ProfileChange() {
   );
 }
 
+// function MyTabs() {
+//   return (
+//     <Tab.Navigator>
+//       <Tab.Screen
+//         name="Profile"
+//         component={ProfileChange})
+// }
+
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerStyle: {
+          backgroundColor: colours.littleBoyBlue,
+        },
+        unmountOnBlur: true,
+        tabBarActiveTintColor: colours.cameoPink,
+        tabBarInactiveTintColor: colours.middleBlueGreen,
+        tabBarShowLabel: false,
+        headerShown: false,
+        tabBarStyle: {
+          backgroundColor: colours.littleBoyBlue,
+          height: 60,
+          paddingBottom: 10,
+        },
+        tabBarHideOnKeyboard: true,
+      })}
+    >
+      <Tab.Screen
+        name="Current"
+        component={CurrentFood}
+        options={{
+          tabBarLabel: "Food",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="food" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Wastage"
+        component={ExpiredFood}
+        options={{
+          tabBarLabel: "Expired",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="emoticon-sad"
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      />
+      
+      <Tab.Screen
+        name="Fun Facts"
+        component={FunFact}
+        options={{
+          tabBarLabel: "Fun Fact",
+        
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="head-lightbulb"
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Profile"
-        component={ProfileChange}
+        component={Profile}
         options={{
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => (
@@ -50,11 +125,14 @@ function MyTabs() {
           ),
         }}
       />
+      {/* <Tab.Screen
+         name="Profile"
+         component={ProfileChange})
+         
+      /> */}
     </Tab.Navigator>
   );
 }
-
-
 
 export default function App() {
   return (
