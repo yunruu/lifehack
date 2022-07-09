@@ -3,7 +3,6 @@ import { auth, db } from "../config/Firebase";
 import { BlueButton } from "../config/reusable";
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity, SafeAreaView, } from 'react-native';
-// import { Avatar, Title, Caption, TouchableRipple, } from 'react-native-paper';
 
 function Profile({ navigation }) {
 
@@ -18,12 +17,6 @@ function Profile({ navigation }) {
 
   const [point, setPoint] = useState("");
   const [status, setStatus] = useState("");
-  // const getPoints = async() => {
-  //   const res = db.collection("users").doc(auth.currentUser.uid);
-  //   const data = await res.get();
-  //   data.then(doc => {
-  //     setPoint(doc.data().points)
-  //   })
   
   var points = db.collection("users").doc(auth.currentUser.uid);
   var currPoint = 0;
@@ -78,8 +71,6 @@ function Profile({ navigation }) {
     </View>
   );
 }
-
-// Based on points (every 50 points?), status will change (Beginner, Amateur, Intermediate, Professional, Senior, Expert, Ambassador)
 
 export default Profile;
 
