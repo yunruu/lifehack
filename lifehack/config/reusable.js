@@ -6,7 +6,7 @@ import {
   View,
   Text,
 } from "react-native";
-import colours from "./colours";
+import colours from "./Colours";
 
 export function PinkTextInput({
   placeholder,
