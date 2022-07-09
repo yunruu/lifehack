@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { auth, db } from "../config/Firebase";
+import { auth, db } from "../config/firebase";
 import CurrentFoodDisplay from '../components/CurrentFoodDisplay'
 import {
   Text,
