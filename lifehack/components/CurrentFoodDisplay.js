@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View, TouchableOpacity} from 'react-native';
 import React from 'react';
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { auth, db } from "../config/firebase";
+import { auth, db } from "../config/Firebase";
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 

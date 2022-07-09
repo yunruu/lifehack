@@ -125,11 +125,6 @@ function MyTabs() {
           ),
         }}
       />
-      {/* <Tab.Screen
-         name="Profile"
-         component={ProfileChange})
-         
-      /> */}
     </Tab.Navigator>
   );
 }
