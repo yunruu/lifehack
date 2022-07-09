@@ -29,7 +29,7 @@ function Profile({ navigation }) {
         />
         <StatusBar style="auto" />
         <Image style={styles.displayPic} source={require('../assets/astro.jpg')}/>
-        <Text style={styles.username}> Hello, {auth.currentUser.displayName}</Text> 
+        <Text style={styles.username}> {auth.currentUser.displayName}</Text> 
 
         <Text style={styles.profileText}> Points: 50 </Text> 
         <Text style={styles.profileText}> Status: Beginner </Text> 
