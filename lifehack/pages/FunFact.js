@@ -14,6 +14,8 @@ function FunFact(props) {
     "In 2019, Singapore generated around 744 million kg of food waste.",
     "Food waste makes up half of the 1.5kg of waste discarded daily by Singaporean households",
     "From 2007 to 2017, the amount of food waste in Singapore jumped from 558,000 tonnes to 810,000 tonnes.",
+    "Less than one in six Singaporeans are aware of the country’s food wastage problem",
+    "393,000 tonnes of fruits, vegetables, seafood, and eggs are lost due to spoilage or improper handling.",
   ];
   return (
     <ScrollView contentContainerStyle={styles.container}>
