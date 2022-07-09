@@ -14,7 +14,6 @@ function Profile({ navigation }) {
   };
   return (
     <View style={{ alignItems: "center", justifyContent: "center" }}>
-      <Text>Welcome, {auth.currentUser.displayName} </Text>
       <BlueButton text={"Log out"} onPress={() => handleLogout()} />
     </View>
   );

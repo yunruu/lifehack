@@ -7,6 +7,9 @@ import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import CurrentFood from "./pages/CurrentFood";
+import ExpiredFood from "./pages/ExpiredFood";
+import FunFact from "./pages/FunFact";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,12 +31,50 @@ function MyTabs() {
   return (
     <Tab.Navigator>
       <Tab.Screen
+        name="Current"
+        component={CurrentFood}
+        options={{
+          tabBarLabel: "Food",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="food" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Expired"
+        component={ExpiredFood}
+        options={{
+          tabBarLabel: "Expired",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="emoticon-sad"
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      />
+      <Tab.Screen
         name="Profile"
         component={Profile}
         options={{
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Fun Facts"
+        component={FunFact}
+        options={{
+          tabBarLabel: "Fun Fact",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="head-lightbulb"
+              color={color}
+              size={size}
+            />
           ),
         }}
       />
