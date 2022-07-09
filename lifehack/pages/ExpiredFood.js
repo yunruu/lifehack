@@ -1,6 +1,6 @@
 import { FlatList, SafeAreaView, View, Text } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { auth, db } from '../config/firebase';
+import { auth, db } from '../config/Firebase';
 import colours from '../config/colours';
 import moment from 'moment';
 
