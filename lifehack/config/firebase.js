@@ -7,13 +7,13 @@ import "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 const firebaseConfig = {
-  apiKey: "AIzaSyCk12QbHLxalv81DeNakovAFe7wCyZfr0k",
-  authDomain: "lifehack-ab5fd.firebaseapp.com",
-  projectId: "lifehack-ab5fd",
-  storageBucket: "lifehack-ab5fd.appspot.com",
-  messagingSenderId: "821420703462",
-  appId: "1:821420703462:web:995e4461a1d46c70890527",
-  measurementId: "G-J7HV25NLQ8",
+  apiKey: "AIzaSyCPCzJjkPxeBLeR9xfQDZAqEpDM3eBn7Cc",
+  authDomain: "lifehack-5c58f.firebaseapp.com",
+  projectId: "lifehack-5c58f",
+  storageBucket: "lifehack-5c58f.appspot.com",
+  messagingSenderId: "228742078756",
+  appId: "1:228742078756:web:c0d29e8e23746de8a253b1"
+  
 };
 
 if (!firebase.apps.length) {
