@@ -117,7 +117,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileChange}
         options={{
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => (

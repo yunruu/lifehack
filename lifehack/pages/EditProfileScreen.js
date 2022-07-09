@@ -126,8 +126,8 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     marginLeft: 30,
-    color: '#EAC4D5'
-  },
+    color: '#EAC4D5',
+    },
   submitButton:{
     color: "#fff",
     fontSize: 20,
@@ -142,6 +142,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: 10,
     marginHorizontal: 50,
+    marginTop: 50,
     marginLeft: 280,
     marginVertical: 10,
     height: 20,

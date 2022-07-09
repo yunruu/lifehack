@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { auth, db } from "../config/Firebase";
 import { BlueButton } from "../config/reusable";
 import { StatusBar } from 'expo-status-bar';
@@ -6,6 +6,7 @@ import { View, Text, Button, StyleSheet, Image, TouchableOpacity, SafeAreaView, 
 // import { Avatar, Title, Caption, TouchableRipple, } from 'react-native-paper';
 
 function Profile({ navigation }) {
+
   const handleLogout = () => {
     auth
       .signOut()
@@ -15,7 +16,24 @@ function Profile({ navigation }) {
       .catch((error) => alert(error.message));
   };
 
-  // const points = db.collection("users").doc(auth.currentUser.uid).collection("points").onSnapshot((querySnapShot) =>
+  const [point, setPoint] = useState("");
+  // const getPoints = async() => {
+  //   const res = db.collection("users").doc(auth.currentUser.uid);
+  //   const data = await res.get();
+  //   data.then(doc => {
+  //     setPoint(doc.data().points)
+  //   })
+  
+  var points = db.collection("users").doc(auth.currentUser.uid);
+  // useEffect(() => {
+  //   getPoints();
+  // }, "")
+
+  points.get().then((doc) => {
+    setPoint(doc.data().points);
+    }).catch((error) => {
+    console.log("Error getting document:", error);
+  });
 
   return (
     <View style={styles.container}>
@@ -30,8 +48,7 @@ function Profile({ navigation }) {
         <StatusBar style="auto" />
         <Image style={styles.displayPic} source={require('../assets/astro.jpg')}/>
         <Text style={styles.username}> {auth.currentUser.displayName}</Text> 
-
-        <Text style={styles.profileText}> Points: 50 </Text> 
+        <Text style={styles.profileText}> Points: {point} </Text> 
         <Text style={styles.profileText}> Status: Beginner </Text> 
       <BlueButton 
         style={styles.logoutButton} 
@@ -102,6 +119,7 @@ const styles = StyleSheet.create({
     borderColor: '#D6EADF',
     backgroundColor: '#fff',
     paddingHorizontal: 10,
+    marginTop: 50,
     marginHorizontal: 50,
     marginLeft: 280,
     marginVertical: 10,
