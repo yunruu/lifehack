@@ -46,6 +46,7 @@ function Login({ navigation }) {
         onChangeText={(val) => setPassword(val)}
         placeholder={"Password"}
         value={password}
+        secureTextEntry={true}
       />
       <BlueButton text={"Log In"} onPress={() => handleLogin()} />
       <Footer
