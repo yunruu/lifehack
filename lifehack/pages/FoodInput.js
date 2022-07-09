@@ -67,7 +67,7 @@ export default function FoodInput() {
         mode="date"
         placeholder="select date"
         format="DD-MM-YYYY"
-        minDate="01-01-2022"
+        minDate= "01-01-2022"
         maxDate="31-12-2050"
         confirmBtnText="Confirm"
         cancelBtnText="Cancel"
@@ -81,9 +81,17 @@ export default function FoodInput() {
           dateInput: {
             marginLeft: 36,
           },
-          datePickerCon: { backgroundColor: 'black', }
+          datePickerCon: { backgroundColor: 'white', }
         }}
-        onDateChange={(date) => {setExpiry(date)}}
+        onDateChange={
+          (date) => {const str = date
+                     const result = date.split("-")
+                     const [day, month, year] = result
+                     console.log(day)
+                     console.log(date)
+                     console.log(month)
+                     console.log(year)
+                    setExpiry(new Date(year, month, day))}}
       />
       {/*<TextInput
         style={styles.box}
