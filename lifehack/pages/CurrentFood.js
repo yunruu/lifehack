@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from "react";
+import { auth, db } from "../config/firebase";
+import CurrentFoodDisplay from '../components/CurrentFoodDisplay'
 import {
   Text,
   View,
@@ -10,6 +12,7 @@ import {
 import { auth, db } from "../config/firebase";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colours from "../config/colours";
+
 
 function CurrentFood(props) {
   const [food, setFood] = useState([]);
@@ -35,17 +38,25 @@ function CurrentFood(props) {
       <Text style={{ fontSize: 16, alignSelf: "center", marginBottom: 10 }}>
         Welcome, {auth.currentUser.displayName}{" "}
       </Text>
-      <Text style={{ fontSize: 18, fontWeight: "bold" }}>
+      <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 20 }}>
         Your current list of food
       </Text>
-      {food.map((item) => {
-        return (
-          <View id={item.id}>
-            <Text></Text>
-          </View>
-        );
-      })}
 
+      <ScrollView style={styles.scroll}>
+        {food.map((item) => (
+            <CurrentFoodDisplay
+                food= {item.food}
+                expiry= {item.expiry}
+                price= {item.price}
+                quantity= {item.quantity}
+                eaten= {item.eaten}
+                id={item.id}
+            />
+        ))}
+      </ScrollView>
+
+
+     
       <TouchableOpacity
         style={styles.addButton}
         onPress={() => navigation.navigate("FoodInput")}
@@ -58,6 +69,7 @@ function CurrentFood(props) {
         />
       </TouchableOpacity>
     </ScrollView>
+
   );
 }
 
@@ -78,6 +90,12 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
   },
+
+  scroll: {
+    //backgroundColor: 'black',
+    height: 300,
+    width: 420,
+  }
 });
 
 export default CurrentFood;

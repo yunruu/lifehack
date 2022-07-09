@@ -19,6 +19,7 @@ function SignUp({ navigation }) {
           db.collection("users").doc(res.user.uid).set({
             name: name,
             email: email,
+            points: 0
           });
 
           // Update details in firebase authentication
