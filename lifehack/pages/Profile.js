@@ -13,7 +13,7 @@ function Profile({ navigation }) {
       .catch((error) => alert(error.message));
   };
   return (
-    <View style={{ alignItems: "center", justifyContent: "center" }}>
+    <View style={{ alignItems: "center", justifyContent: "center", marginTop: 50 }}>
       <BlueButton text={"Log out"} onPress={() => handleLogout()} />
     </View>
   );

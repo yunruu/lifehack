@@ -43,6 +43,8 @@ function MyTabs() {
         unmountOnBlur: true,
         tabBarActiveTintColor: colours.cameoPink,
         tabBarInactiveTintColor: colours.middleBlueGreen,
+        tabBarShowLabel: false,
+        headerShown: false,
         tabBarStyle: {
           backgroundColor: colours.littleBoyBlue,
           height: 60,
@@ -81,6 +83,7 @@ function MyTabs() {
         component={FunFact}
         options={{
           tabBarLabel: "Fun Fact",
+        
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons
               name="head-lightbulb"

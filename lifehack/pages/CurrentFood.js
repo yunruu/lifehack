@@ -34,7 +34,7 @@ function CurrentFood({navigation}) {
 
   return (
     <ScrollView contentContainerStyle={styles.container}>
-      <Text style={{ fontSize: 16, alignSelf: "center", marginBottom: 10 }}>
+      <Text style={{ fontSize: 30, alignSelf: "center", marginBottom: 10, fontWeight: 'bold', color: colours.littleBoyBlue }}>
         Welcome, {auth.currentUser.displayName}{" "}
       </Text>
       <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 20 }}>
@@ -62,8 +62,8 @@ function CurrentFood({navigation}) {
       >
         <MaterialCommunityIcons
           name="plus-thick"
-          size={24}
-          color="black"
+          size={30}
+          color="white"
           style={{ alignSelf: "flex-end" }}
         />
       </TouchableOpacity>
@@ -79,10 +79,12 @@ const styles = StyleSheet.create({
     backgroundColor: colours.cameoPink,
     borderRadius: 50,
     alignSelf: "flex-end",
-    bottom: 15,
-    right: 10,
+    bottom: 20,
+    right: 20,
   },
   container: {
+
+    marginTop: 50,
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     display: "flex",
     flexDirection: "column",

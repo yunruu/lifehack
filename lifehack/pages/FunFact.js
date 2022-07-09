@@ -33,6 +33,7 @@ function FunFact(props) {
 
 const styles = StyleSheet.create({
   container: {
+    marginTop: 50,
     paddingTop: Platform.OS === "android" ? 10 : 0,
     alignItems: "center",
   },
