@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { BlueButton, PinkTextInput } from "../config/reusable";
+import { View, StyleSheet, StatusBar, Text } from "react-native";
+import { BlueButton, PinkTextInput, Footer } from "../config/reusable";
 import { auth, db } from "../config/firebase";
 
-function Login(props) {
+function Login({ navigation }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const handleLogin = () => {
@@ -15,20 +16,17 @@ function Login(props) {
           // Reset state
           setEmail("");
           setPassword("");
-
           // Navigate to homepage with successful login
-          this.props.navigation.navigate("Profile");
+          navigation.navigate("ProfilePage");
         })
         .catch((error) => {
           // Error handling
           if (error.code === "auth/invalid-email") {
             alert("Invalid email");
           }
-
           if (error.code === "auth/user-not-found") {
             alert("User not found.");
           }
-
           if (error.code === "auth/wrong-password") {
             alert("Wrong password");
           }
@@ -36,23 +34,37 @@ function Login(props) {
     }
   };
   return (
-    <View>
+    <View style={styles.container}>
+      <Text style={{ fontSize: 20 }}>Hello there,</Text>
+      <Text style={{ fontSize: 20 }}>Welcome Back</Text>
       <PinkTextInput
         onChangeText={(val) => setEmail(val)}
-        placeholder={"email"}
+        placeholder={"Email"}
+        value={email}
       />
       <PinkTextInput
         onChangeText={(val) => setPassword(val)}
-        placeholder={"password"}
+        placeholder={"Password"}
+        value={password}
       />
-      <BlueButton text={"Login"} onPress={() => handleLogin} />
+      <BlueButton text={"Log In"} onPress={() => handleLogin()} />
       <Footer
         desc={"Don't have an account yet?"}
         text={"Sign up"}
-        onPress={this.onFooterLinkPress}
+        onPress={() => navigation.navigate("Signup")}
       />
     </View>
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    display: "flex",
+    flexDirection: "column",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 export default Login;

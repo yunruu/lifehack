@@ -1,5 +1,11 @@
 import React from "react";
-import { StyleSheet, TextInput, TouchableOpacity } from "react-native";
+import {
+  StyleSheet,
+  TextInput,
+  TouchableOpacity,
+  View,
+  Text,
+} from "react-native";
 import colours from "./colours";
 
 export function PinkTextInput({
@@ -53,9 +59,16 @@ export function Footer({ onPress, text, desc }) {
 
 const styles = StyleSheet.create({
   pinkTextInput: {
-    color: colours.cameoPink,
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+    padding: 10,
+    backgroundColor: colours.cameoPink,
+    borderRadius: 25,
+    width: 320,
+    height: 46,
   },
-  blackButton: {
+  blueButton: {
     width: 130,
     height: 40,
     borderRadius: 999,

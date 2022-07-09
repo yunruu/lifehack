@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { View, StyleSheet, StatusBar, Text } from "react-native";
+import { BlueButton, PinkTextInput, Footer } from "../config/reusable";
+import { auth, db } from "../config/firebase";
 
-function SignUp(props) {
+function SignUp({ navigation }) {
   const [email, setEmail] = useState("");
   const [name, setName] = useState("");
   const [password, setPassword] = useState("");
@@ -10,42 +13,29 @@ function SignUp(props) {
     } else {
       // Create new account for user
       auth
-        .createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .createUserWithEmailAndPassword(email, password)
         .then((res) => {
           // Add in user details in firestore
           db.collection("users").doc(res.user.uid).set({
-            name: this.state.firstName,
-            email: this.state.email,
-            budgetValue: 0.0,
-            dateTo: new Date(),
-            dateFrom: new Date(),
-            timeUserWants: "This Month",
-            customExpenseArr: [],
-          });
-
-          db.collection("userLookup").doc(this.state.email).set({
-            uid: res.user.uid,
+            name: name,
+            email: email,
           });
 
           // Update details in firebase authentication
           res.user.updateProfile({
-            displayName: this.state.firstName,
-            photoURL: this.state.imageSource,
+            displayName: name,
           });
 
           // Alerts user to log in with new account
           alert("Log in with your new account");
 
           // Reset state on sign up page
-          this.setState({
-            isLoading: false,
-            username: "",
-            email: "",
-            password: "",
-          });
+          setName("");
+          setEmail("");
+          setPassword("");
 
           // Navigates to login page for user to log in with new account
-          this.props.navigation.navigate("Login");
+          navigation.navigate("Login");
         })
         .catch((error) => {
           if (error.code === "auth/email-already-in-use") {
@@ -55,34 +45,44 @@ function SignUp(props) {
           } else {
             alert(error.message);
           }
-          this.setState({ isLoading: false });
-          this.props.navigation.navigate("Login");
+          navigation.navigate("Login");
         });
     }
   };
 
   return (
-    <View>
+    <View style={styles.container}>
+      <Text style={{ fontSize: 20 }}>Welcome Back</Text>
       <PinkTextInput
         onChangeText={(val) => setEmail(val)}
-        placeholder={"email"}
+        placeholder={"Email"}
       />
       <PinkTextInput
         onChangeText={(val) => setName(val)}
-        placeholder={"name"}
+        placeholder={"Name"}
       />
       <PinkTextInput
         onChangeText={(val) => setPassword(val)}
-        placeholder={"password"}
+        placeholder={"Password"}
       />
-      <BlueButton text={"Login"} onPress={() => handleLogin} />
+      <BlueButton text={"Sign up"} onPress={() => handleSignUp()} />
       <Footer
-        desc={"Don't have an account yet?"}
-        text={"Sign up"}
-        onPress={this.onFooterLinkPress}
+        desc={"Already have an account?"}
+        text={"Log in"}
+        onPress={() => navigation.navigate("Login")}
       />
     </View>
   );
 }
 
+const styles = StyleSheet.create({
+  container: {
+    paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    display: "flex",
+    flexDirection: "column",
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 export default SignUp;
