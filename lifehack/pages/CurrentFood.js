@@ -1,8 +1,18 @@
 import React, { useEffect, useState } from "react";
-import { Text, View, StyleSheet, StatusBar } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
 import { auth, db } from "../config/firebase";
 import CurrentFoodDisplay from '../components/CurrentFoodDisplay'
+import {
+  Text,
+  View,
+  StyleSheet,
+  StatusBar,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import { auth, db } from "../config/firebase";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import colours from "../config/colours";
+
 
 function CurrentFood(props) {
   const [food, setFood] = useState([]);
@@ -24,13 +34,14 @@ function CurrentFood(props) {
   }, [food, setFood]);
 
   return (
-    <View style={styles.container}>
+    <ScrollView contentContainerStyle={styles.container}>
       <Text style={{ fontSize: 16, alignSelf: "center", marginBottom: 10 }}>
         Welcome, {auth.currentUser.displayName}{" "}
       </Text>
       <Text style={{ fontSize: 18, fontWeight: "bold", marginBottom: 20 }}>
         Your current list of food
       </Text>
+
       <ScrollView style={styles.scroll}>
         {food.map((item) => (
             <CurrentFoodDisplay
@@ -43,11 +54,35 @@ function CurrentFood(props) {
             />
         ))}
       </ScrollView>
-    </View>
+
+
+     
+      <TouchableOpacity
+        style={styles.addButton}
+        onPress={() => navigation.navigate("FoodInput")}
+      >
+        <MaterialCommunityIcons
+          name="plus-thick"
+          size={24}
+          color="black"
+          style={{ alignSelf: "flex-end" }}
+        />
+      </TouchableOpacity>
+    </ScrollView>
+
   );
 }
 
 const styles = StyleSheet.create({
+  addButton: {
+    position: "absolute",
+    padding: 10,
+    backgroundColor: colours.cameoPink,
+    borderRadius: 50,
+    alignSelf: "flex-end",
+    bottom: 15,
+    right: 10,
+  },
   container: {
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     display: "flex",
