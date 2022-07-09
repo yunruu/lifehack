@@ -1,12 +1,50 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet, View, Text, TouchableOpacity, TextInput} from "react-native";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import Ionicons from 'react-native-vector-icons/Ionicons';
+import { db, auth } from '../config/firebase.js'
+export default function FoodInput() { 
 
-export default function App() {
+  
+  const [food, setFood] = useState('');
+  const [expiry, setExpiry] = useState('');
+  const [price, setPrice] = useState('');
+  const [quantity, setQuantity] = useState('');
+  const { currentUser } = auth;
+ 
+  const onSubmitHandler = async () => {
+
+      try {
+          const foodRef = await db.collection, {
+              food: food,
+              expiry: expiry,
+              price: price,
+              quantity: quantity,
+              username: currentUser.displayName,
+              profileImg: currentUser.photoURL,
+              timestamp: serverTimestamp(),
+              email: currentUser.email,
+          });
+
+          console.log('onSubmitHandler success', foodRef.id);
+          
+          clearForm();
+      } catch (err) {
+          console.log('onSubmitHandler failure', err);
+      }
+  };
+
+  const clearForm = () => {
+    setFood('');
+    setExpiry('');
+    setPrice('');
+    setQuantity('');
+    Keyboard.dismiss();
+};
+
     return (
       <View >
         <View style={styles.circle}></View>
@@ -14,15 +52,27 @@ export default function App() {
           <Ionicons name="restaurant-outline" color="#95B8D1" size="35" />
           <Text style={styles.header}>Key in your food items!</Text>
         </View>
-        <TextInput style={styles.box} placeholder="Food Item">
+        <TextInput style={styles.box} 
+                   placeholder="Food Item"
+                   onChangeText={setFood}
+                   value={food}>
         </TextInput>
-        <TextInput style={styles.box} placeholder="Expiry Date">
+        <TextInput style={styles.box} 
+                   placeholder="Expiry Date"
+                   onChangeText={setExpiry}
+                   value={expiry}>
         </TextInput>
-        <TextInput style={styles.box} placeholder="Price">
+        <TextInput style={styles.box} 
+                   placeholder="Price"
+                   onChangeText={setPrice}
+                   value={price}>
         </TextInput>
-        <TextInput style={styles.box} placeholder="Quantity">
+        <TextInput style={styles.box} 
+                   placeholder="Quantity"
+                   onChangeText={setQuantity}
+                   value={quantity}>
         </TextInput>
-        <TouchableOpacity style={styles.add}>
+        <TouchableOpacity style={styles.add} onPress={onSubmitHandler}>
           <Ionicons name="add-circle" color="#95B8D1" size="65" />
         </TouchableOpacity>
       
