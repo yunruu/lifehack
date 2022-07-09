@@ -109,7 +109,7 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   logoutButton: {
-    backgroundColor: '#D6EADF',
+    backgroundColor: '#809BCE',
     paddingHorizontal: 10,
     marginHorizontal: 5,
     marginVertical: 40,
@@ -118,7 +118,7 @@ const styles = StyleSheet.create({
     color: "#fff",
     fontSize: 20,
     fontWeight: 'bold',
-    backgroundColor: '#D6EADF',
+    backgroundColor: '#809BCE',
     paddingVertical: -1, 
     textAlign: 'center',
     borderRadius: 900,
@@ -129,7 +129,8 @@ const styles = StyleSheet.create({
     borderColor: '#D6EADF',
     backgroundColor: '#fff',
     paddingHorizontal: 10,
-    marginTop: 50,
+    marginTop: 20,
+    marginBottom: 20,
     marginHorizontal: 50,
     marginLeft: 280,
     marginVertical: 10,
@@ -142,17 +143,6 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     marginLeft: 0,
-    color: '#EAC4D5'
-  },
-  userInfoWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    marginVertical: 20,
-  },
-  userInfoSubTitle: {
-    fontSize: 12,
-    color: '#666',
-    textAlign: 'center',
+    color: '#809BCE'
   },
 });

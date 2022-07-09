@@ -83,7 +83,7 @@ function CurrentFood({navigation}) {
      
       <TouchableOpacity
         style={styles.addButton}
-        onPress={() => navigation.navigate("FoodInput")}
+        onPress={() => navigation.navigate("Food Input")}
       >
         <MaterialCommunityIcons
           name="plus-thick"

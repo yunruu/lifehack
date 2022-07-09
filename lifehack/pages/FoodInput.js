@@ -65,7 +65,7 @@ export default function FoodInput() {
         style={{marginTop: 50, width: "90%", paddingLeft: 20}}
         date={expiry}
         mode="date"
-        placeholder="select date"
+        placeholder="Select Expiration Date"
         format="DD-MM-YYYY"
         minDate= "01-01-2022"
         maxDate="31-12-2050"
@@ -87,10 +87,6 @@ export default function FoodInput() {
           (date) => {const str = date
                      const result = date.split("-")
                      const [day, month, year] = result
-                     console.log(day)
-                     console.log(date)
-                     console.log(month)
-                     console.log(year)
                     setExpiry(new Date(year, month, day))}}
       />
       {/*<TextInput
@@ -112,7 +108,7 @@ export default function FoodInput() {
         value={quantity}
       ></TextInput>
       <TouchableOpacity style={styles.add} onPress={onSubmitHandler}>
-        <Ionicons name="add-circle" color="#95B8D1" size="65" />
+        <Ionicons name="add-circle" color="#95B8D1" size={65} />
       </TouchableOpacity>
     </ScrollView>
   );

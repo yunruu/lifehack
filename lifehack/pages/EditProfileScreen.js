@@ -4,28 +4,10 @@ import { BlueButton } from "../config/reusable";
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, TextInput, Button, StyleSheet, Image, TouchableOpacity, SafeAreaView, Alert, Platform} from 'react-native';
 import * as ImagePicker from 'expo-image-picker';
-// import AsyncStorage from 'react-native-community/async-storage';
-
-// import { Avatar, Title, Caption, TouchableRipple, } from 'react-native-paper';
 
 function EditProfileScreen({ navigation }) {
 
   const [name, setName] = useState("");
-  // const [image, setImage] = useState(null);
-
-  // const pickImage = async () => {
-  //   // No permissions request is necessary for launching the image library
-  //   let result = await ImagePicker.launchImageLibraryAsync({
-  //     mediaTypes: ImagePicker.MediaTypeOptions.All,
-  //     allowsEditing: true,
-  //     aspect: [4, 3],
-  //     quality: 1,
-  //   });
-
-  //   if (!result.cancelled) {
-  //     setImage(result.uri);
-  //   }
-  // };
 
   const updateName = async() => {
     if (name == "") {
@@ -54,11 +36,6 @@ function EditProfileScreen({ navigation }) {
         />
         <StatusBar style="auto" />
         <Image style={styles.displayPic} source={require('../assets/astro.jpg')}/>
-        
-        {/* <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button title="Pick an image from camera roll" onPress={pickImage} />
-        {image && <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />}
-        </View> */}
 
         <TextInput
         style={styles.nameInput}
@@ -104,7 +81,6 @@ const styles = StyleSheet.create({
     textAlign: 'center',
     padding: 10,
     justifyContent: 'center',
-    //textTransform: 'uppercase',
   },
   nameInput: {
     fontSize: 20,
@@ -126,13 +102,13 @@ const styles = StyleSheet.create({
     fontSize: 15,
     fontWeight: 'bold',
     marginLeft: 30,
-    color: '#EAC4D5',
+    color: '#809BCE',
     },
   submitButton:{
     color: "#fff",
     fontSize: 20,
     fontWeight: 'bold',
-    backgroundColor: '#D6EADF',
+    backgroundColor: '#809BCE',
     padding: 0, 
     textAlign: 'center',
     borderRadius: 900,
@@ -142,28 +118,10 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     paddingHorizontal: 10,
     marginHorizontal: 50,
-    marginTop: 50,
+    marginTop: 20,
     marginLeft: 280,
     marginVertical: 10,
     height: 20,
     width: 110
-  },
-
-  userBtnWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    width: '100%',
-    marginBottom: 10,
-  },
-  userInfoWrapper: {
-    flexDirection: 'row',
-    justifyContent: 'space-around',
-    width: '100%',
-    marginVertical: 20,
-  },
-  userInfoSubTitle: {
-    fontSize: 12,
-    color: '#666',
-    textAlign: 'center',
   },
 });

@@ -11,8 +11,6 @@ import EditProfileScreen from "./pages/EditProfileScreen";
 import FoodInput from "./pages/FoodInput";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import Ionicons from "react-native-vector-icons/Ionicons";
-
 import CurrentFood from "./pages/CurrentFood";
 import ExpiredFood from "./pages/ExpiredFood";
 import FunFact from "./pages/FunFact";
@@ -29,10 +27,21 @@ function MyStack() {
     >
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={SignUp} />
-      <Stack.Screen name="FoodInput" component={FoodInput} />
+      {/* <Stack.Screen name="FoodInput" component={FoodInput} /> */}
       <Stack.Screen name="ProfilePage" component={MyTabs} />
     </Stack.Navigator>
   );
+}
+
+function CurrentFoodAll()  {
+  return (
+    <Stack.Navigator       
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="Current Food" component={CurrentFood}/>
+      <Stack.Screen name="Food Input" component={FoodInput}/>
+    </Stack.Navigator>
+  )
 }
 
 function ProfileChange() {
@@ -62,11 +71,15 @@ function MyTabs() {
         headerStyle: {
           backgroundColor: colours.littleBoyBlue,
         },
+        headerTitleStyle: {
+          fontSize: 24,
+          color: '#fff',
+        },
         unmountOnBlur: true,
         tabBarActiveTintColor: colours.cameoPink,
-        tabBarInactiveTintColor: colours.middleBlueGreen,
+        tabBarInactiveTintColor: "#fff",
         tabBarShowLabel: false,
-        headerShown: false,
+        headerShown: true,
         tabBarStyle: {
           backgroundColor: colours.littleBoyBlue,
           height: 60,
@@ -76,8 +89,8 @@ function MyTabs() {
       })}
     >
       <Tab.Screen
-        name="Current"
-        component={CurrentFood}
+        name="My Food List"
+        component={CurrentFoodAll}
         options={{
           tabBarLabel: "Food",
           tabBarIcon: ({ color, size }) => (

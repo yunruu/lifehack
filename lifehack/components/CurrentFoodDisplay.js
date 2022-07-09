@@ -30,7 +30,7 @@ export default CurrentFoodDisplay = ({food, expiry, price, quantity, eaten, id})
       <View style={styles.innerdisplay}>
         <TouchableOpacity style={styles.tick}
                           onPress={() => onDeleteHandler(id)}>
-            <Ionicons name="checkmark-circle-outline" color="#95B8D1" size="55" />
+            <Ionicons name="checkmark-circle-outline" color="#95B8D1" size={55} />
         </TouchableOpacity>
         <View>
             <Text style={styles.food}>{food}</Text>
