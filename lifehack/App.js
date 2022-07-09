@@ -6,6 +6,8 @@ import { StyleSheet, View } from "react-native";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
+import EditProfileScreen from "./pages/EditProfileScreen";
+
 import FoodInput from "./pages/FoodInput";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -32,6 +34,26 @@ function MyStack() {
     </Stack.Navigator>
   );
 }
+
+function ProfileChange() {
+  return (
+    <Stack.Navigator
+      initialRouteName="Profile"
+      screenOptions={{ headerShown: false }}
+    >
+      <Stack.Screen name="ProfilePage" component={Profile} />
+      <Stack.Screen name="EditProfileScreen" component={EditProfileScreen} />
+    </Stack.Navigator>
+  );
+}
+
+// function MyTabs() {
+//   return (
+//     <Tab.Navigator>
+//       <Tab.Screen
+//         name="Profile"
+//         component={ProfileChange})
+// }
 
 function MyTabs() {
   return (
@@ -95,7 +117,7 @@ function MyTabs() {
       />
       <Tab.Screen
         name="Profile"
-        component={Profile}
+        component={ProfileChange}
         options={{
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => (

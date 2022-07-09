@@ -30,7 +30,7 @@ export function PinkTextInput({
   );
 }
 
-export function BlueButton({ text, onPress, style }) {
+export function BlueButton({ text, onPress, style, textStyle}) {
   return (
     <>
       <TouchableOpacity
@@ -38,7 +38,7 @@ export function BlueButton({ text, onPress, style }) {
         style={[styles.blueButton, style]}
         onPress={onPress}
       >
-        <Text>{text}</Text>
+        <Text style={textStyle}>{text}</Text>
       </TouchableOpacity>
     </>
   );

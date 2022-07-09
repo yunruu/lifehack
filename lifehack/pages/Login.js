@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { View, StyleSheet, StatusBar, Text } from "react-native";
 import { BlueButton, PinkTextInput, Footer } from "../config/reusable";
-import { auth, db } from "../config/firebase";
+import { auth, db } from "../config/Firebase";
 
 function Login({ navigation }) {
   const [email, setEmail] = useState("");
