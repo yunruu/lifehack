@@ -10,6 +10,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import CurrentFood from "./pages/CurrentFood";
 import ExpiredFood from "./pages/ExpiredFood";
 import FunFact from "./pages/FunFact";
+import colours from "./config/colours";
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -29,7 +30,22 @@ function MyStack() {
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerStyle: {
+          backgroundColor: colours.littleBoyBlue,
+        },
+        unmountOnBlur: true,
+        tabBarActiveTintColor: colours.cameoPink,
+        tabBarInactiveTintColor: colours.middleBlueGreen,
+        tabBarStyle: {
+          backgroundColor: colours.littleBoyBlue,
+          height: 60,
+          paddingBottom: 2,
+        },
+        tabBarHideOnKeyboard: true,
+      })}
+    >
       <Tab.Screen
         name="Current"
         component={CurrentFood}
