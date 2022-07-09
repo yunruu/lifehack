@@ -64,6 +64,7 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     padding: 10,
     backgroundColor: colours.cameoPink,
+    borderColor: colours.cameoPink,
     borderRadius: 25,
     width: 320,
     height: 46,
@@ -77,6 +78,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     backgroundColor: colours.paleCerulean,
+    
   },
   footerView: {
     alignItems: "center",
@@ -91,4 +93,5 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 16,
   },
+  
 });

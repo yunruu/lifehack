@@ -21,7 +21,7 @@ export default CurrentFoodDisplay = ({food, expiry, price, quantity, eaten, id})
 
         const usersRef = db.collection('users').doc(auth.currentUser.uid);
         usersRef.update({
-           points: firebase.firestore.FieldValue.increment(50)
+           points: firebase.firestore.FieldValue.increment(10)
         })
     };
 

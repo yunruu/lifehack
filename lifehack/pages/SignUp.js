@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { View, StyleSheet, StatusBar, Text } from "react-native";
+import { View, StyleSheet, StatusBar, Text, Image } from "react-native";
 import { BlueButton, PinkTextInput, Footer } from "../config/reusable";
 import { auth, db } from "../config/firebase";
 
@@ -53,7 +53,8 @@ function SignUp({ navigation }) {
 
   return (
     <View style={styles.container}>
-      <Text style={{ fontSize: 20 }}>Welcome Back</Text>
+      <Image style={styles.img} source={require('../assets/logo.png')} />
+      <Text style={{ fontSize: 20 }}>Hello there!</Text>
       <PinkTextInput
         onChangeText={(val) => setEmail(val)}
         placeholder={"Email"}
@@ -78,6 +79,11 @@ function SignUp({ navigation }) {
 }
 
 const styles = StyleSheet.create({
+  img: {
+    width: 400,
+    height: 220
+  },
+
   container: {
     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
     display: "flex",
@@ -85,6 +91,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: "center",
     justifyContent: "center",
+    backgroundColor: 'white'
   },
 });
 export default SignUp;
