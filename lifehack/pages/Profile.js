@@ -17,6 +17,7 @@ function Profile({ navigation }) {
   };
 
   const [point, setPoint] = useState("");
+  const [status, setStatus] = useState("");
   // const getPoints = async() => {
   //   const res = db.collection("users").doc(auth.currentUser.uid);
   //   const data = await res.get();
@@ -25,12 +26,30 @@ function Profile({ navigation }) {
   //   })
   
   var points = db.collection("users").doc(auth.currentUser.uid);
-  // useEffect(() => {
-  //   getPoints();
-  // }, "")
+  var currPoint = 0;
 
   points.get().then((doc) => {
     setPoint(doc.data().points);
+    currPoint = doc.data().points;
+
+    if (currPoint <= 100) {
+      setStatus("Beginner");
+    } else if (currPoint <= 300) {
+      setStatus("Amateur");
+    } else if (currPoint <= 500) {
+      setStatus("Intermediate");
+    } else if (currPoint <= 800) {
+      setStatus("Professional");
+    } else if (currPoint <= 1200) {
+      setStatus("Senior");
+    } else if (currPoint <= 1500) {
+      setStatus("Expert");
+    } else if (currPoint <= 1800) {
+      setStatus("Master");
+    } else {
+      setStatus("Ambassador");
+    }
+
     }).catch((error) => {
     console.log("Error getting document:", error);
   });
@@ -49,7 +68,7 @@ function Profile({ navigation }) {
         <Image style={styles.displayPic} source={require('../assets/astro.jpg')}/>
         <Text style={styles.username}> {auth.currentUser.displayName}</Text> 
         <Text style={styles.profileText}> Points: {point} </Text> 
-        <Text style={styles.profileText}> Status: Beginner </Text> 
+        <Text style={styles.profileText}> Status: {status} </Text> 
       <BlueButton 
         style={styles.logoutButton} 
         text={"LOG OUT"} 
