@@ -6,7 +6,9 @@ import { StyleSheet, View } from "react-native";
 import Login from "./pages/Login";
 import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
+import FoodInput from "./pages/FoodInput";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Ionicons from 'react-native-vector-icons/Ionicons';
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -34,6 +36,16 @@ function MyTabs() {
           tabBarLabel: "Profile",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="FoodInput"
+        component={FoodInput}
+        options={{
+          tabBarLabel: "FoodInput",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="fast-food" color={color} size={size} />
           ),
         }}
       />
