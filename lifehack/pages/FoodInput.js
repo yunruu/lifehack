@@ -1,3 +1,4 @@
+
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -75,51 +76,49 @@ export default function FoodInput() {
         <TouchableOpacity style={styles.add} onPress={onSubmitHandler}>
           <Ionicons name="add-circle" color="#95B8D1" size="65" />
         </TouchableOpacity>
-      
-      </View>
-    )
-  }
-  
-  const styles = StyleSheet.create({
-    circle: {
-      flex: 1,
-      backgroundColor: "#EAC4D5",
-      alignItems: "center",
-      justifyContent: "center",
-      width: 450,
-      height: 250,
-      marginTop: -700,
-      paddingTop: 900,
-      borderRadius: 200,
-      marginLeft: -17
-    },
-  
-    container: {
-      flexDirection: 'row',
-      paddingLeft: 20,
-      marginTop: 20,
-      marginTop: 20,
-    },
-  
-    header: {
-      fontSize: 25,
-      paddingLeft: 20,
-      fontWeight: 'bold'
-    },
-  
-    box: {
-      width: 350,
-      height: 50,
-      alignSelf: 'center',
-      backgroundColor: "#D6EADF",
-      marginTop: 50,
-      paddingLeft: 20
-  
-    },
-  
-    add: {
-      alignItems: 'flex-end',
-      marginRight: 20,
-      marginTop: 20
-    }
-  }); 
+
+  );
+}
+
+const styles = StyleSheet.create({
+  circle: {
+    flex: 1,
+    backgroundColor: "#EAC4D5",
+    alignItems: "center",
+    justifyContent: "center",
+    width: 450,
+    height: 250,
+    marginTop: -700,
+    paddingTop: 900,
+    borderRadius: 200,
+    marginLeft: -17,
+  },
+
+  container: {
+    flexDirection: "row",
+    paddingLeft: 20,
+    marginTop: 20,
+    marginTop: 20,
+  },
+
+  header: {
+    fontSize: 25,
+    paddingLeft: 20,
+    fontWeight: "bold",
+  },
+
+  box: {
+    width: 350,
+    height: 50,
+    alignSelf: "center",
+    backgroundColor: "#D6EADF",
+    marginTop: 50,
+    paddingLeft: 20,
+  },
+
+  add: {
+    alignItems: "flex-end",
+    marginRight: 20,
+    marginTop: 20,
+  },
+});

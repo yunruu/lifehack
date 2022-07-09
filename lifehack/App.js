@@ -8,7 +8,14 @@ import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import FoodInput from "./pages/FoodInput";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
+
 import Ionicons from 'react-native-vector-icons/Ionicons';
+
+import CurrentFood from "./pages/CurrentFood";
+import ExpiredFood from "./pages/ExpiredFood";
+import FunFact from "./pages/FunFact";
+import colours from "./config/colours";
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -28,7 +35,46 @@ function MyStack() {
 
 function MyTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator
+      screenOptions={({ route }) => ({
+        headerStyle: {
+          backgroundColor: colours.littleBoyBlue,
+        },
+        unmountOnBlur: true,
+        tabBarActiveTintColor: colours.cameoPink,
+        tabBarInactiveTintColor: colours.middleBlueGreen,
+        tabBarStyle: {
+          backgroundColor: colours.littleBoyBlue,
+          height: 60,
+          paddingBottom: 2,
+        },
+        tabBarHideOnKeyboard: true,
+      })}
+    >
+      <Tab.Screen
+        name="Current"
+        component={CurrentFood}
+        options={{
+          tabBarLabel: "Food",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="food" color={color} size={size} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Expired"
+        component={ExpiredFood}
+        options={{
+          tabBarLabel: "Expired",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons
+              name="emoticon-sad"
+              color={color}
+              size={size}
+            />
+          ),
+        }}
+      />
       <Tab.Screen
         name="Profile"
         component={Profile}
@@ -40,12 +86,17 @@ function MyTabs() {
         }}
       />
       <Tab.Screen
-        name="FoodInput"
-        component={FoodInput}
+        name="Fun Facts"
+        component={FunFact}
         options={{
-          tabBarLabel: "FoodInput",
+          tabBarLabel: "Fun Fact",
           tabBarIcon: ({ color, size }) => (
-            <Ionicons name="fast-food" color={color} size={size} />
+            <MaterialCommunityIcons
+              name="head-lightbulb"
+              color={color}
+              size={size}
+            />
+
           ),
         }}
       />

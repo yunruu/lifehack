@@ -64,6 +64,7 @@ function SignUp({ navigation }) {
       <PinkTextInput
         onChangeText={(val) => setPassword(val)}
         placeholder={"Password"}
+        secureTextEntry={true}
       />
       <BlueButton text={"Sign up"} onPress={() => handleSignUp()} />
       <Footer
