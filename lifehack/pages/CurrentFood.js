@@ -9,12 +9,11 @@ import {
   ScrollView,
   TouchableOpacity,
 } from "react-native";
-import { auth, db } from "../config/firebase";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import colours from "../config/colours";
 
 
-function CurrentFood(props) {
+function CurrentFood({navigation}) {
   const [food, setFood] = useState([]);
 
   useEffect(() => {

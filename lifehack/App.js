@@ -27,6 +27,7 @@ function MyStack() {
     >
       <Stack.Screen name="Login" component={Login} />
       <Stack.Screen name="Signup" component={SignUp} />
+      <Stack.Screen name="FoodInput" component={FoodInput} />
       <Stack.Screen name="ProfilePage" component={MyTabs} />
     </Stack.Navigator>
   );
