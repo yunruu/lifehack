@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import {
   StyleSheet,
+  ScrollView,
   View,
   Text,
   TouchableOpacity,
@@ -8,6 +9,9 @@ import {
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { db, auth } from "../config/firebase.js";
+import DatePicker from 'react-native-datepicker'
+import colours from "../config/colours.js";
+
 export default function FoodInput() {
   const [food, setFood] = useState("");
   const [expiry, setExpiry] = useState("");
@@ -45,7 +49,7 @@ export default function FoodInput() {
   };
 
   return (
-    <View>
+    <ScrollView showsVerticalScrollIndicator={false}>
       <View style={styles.circle}></View>
       <View style={styles.container}>
         <Ionicons name="restaurant-outline" color="#95B8D1" size="35" />
@@ -57,12 +61,36 @@ export default function FoodInput() {
         onChangeText={setFood}
         value={food}
       ></TextInput>
-      <TextInput
+      <DatePicker
+        style={{marginTop: 50, width: "90%", paddingLeft: 20}}
+        date={expiry}
+        mode="date"
+        placeholder="select date"
+        format="DD-MM-YYYY"
+        minDate="01-01-2022"
+        maxDate="31-12-2050"
+        confirmBtnText="Confirm"
+        cancelBtnText="Cancel"
+        customStyles={{
+          dateIcon: {
+            position: 'absolute',
+            left: 0,
+            top: 4,
+            marginLeft: 0
+          },
+          dateInput: {
+            marginLeft: 36,
+          },
+          datePickerCon: { backgroundColor: 'black', }
+        }}
+        onDateChange={(date) => {setExpiry(date)}}
+      />
+      {/*<TextInput
         style={styles.box}
         placeholder="Expiry Date"
         onChangeText={setExpiry}
         value={expiry}
-      ></TextInput>
+  ></TextInput>*/}
       <TextInput
         style={styles.box}
         placeholder="Price"
@@ -78,7 +106,7 @@ export default function FoodInput() {
       <TouchableOpacity style={styles.add} onPress={onSubmitHandler}>
         <Ionicons name="add-circle" color="#95B8D1" size="65" />
       </TouchableOpacity>
-    </View>
+    </ScrollView>
   );
 }
 

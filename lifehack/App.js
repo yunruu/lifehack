@@ -46,7 +46,7 @@ function MyTabs() {
         tabBarStyle: {
           backgroundColor: colours.littleBoyBlue,
           height: 60,
-          paddingBottom: 2,
+          paddingBottom: 10,
         },
         tabBarHideOnKeyboard: true,
       })}
@@ -62,7 +62,7 @@ function MyTabs() {
         }}
       />
       <Tab.Screen
-        name="Expired"
+        name="Wastage"
         component={ExpiredFood}
         options={{
           tabBarLabel: "Expired",
