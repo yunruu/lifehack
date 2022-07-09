@@ -32,6 +32,31 @@ function CurrentFood({navigation}) {
     return unsubscribe;
   }, [food, setFood]);
 
+  const dateFormat = (date) => {
+    const [day, month, year] = [
+      date.getDate(),
+      date.getMonth(),
+      date.getFullYear(),
+    ];
+
+    const months = [
+      "Jan",
+      "Feb",
+      "Mar",
+      "Apr",
+      "May",
+      "Jun",
+      "Jul",
+      "Aug",
+      "Sep",
+      "Oct",
+      "Nov",
+      "Dec",
+    ];
+
+    return day.toString() + " " + months[month] + " " + year.toString();
+  };
+
   return (
     <ScrollView contentContainerStyle={styles.container}>
       <Text style={{ fontSize: 30, alignSelf: "center", marginBottom: 10, fontWeight: 'bold', color: colours.littleBoyBlue }}>
@@ -45,7 +70,7 @@ function CurrentFood({navigation}) {
         {food.map((item) => (
             <CurrentFoodDisplay
                 food= {item.food}
-                expiry= {item.expiry}
+                expiry= {dateFormat(new Date(item.expiry.seconds*1000))} //{new Date(item.expiry.seconds*1000).toString()}
                 price= {item.price}
                 quantity= {item.quantity}
                 eaten= {item.eaten}
