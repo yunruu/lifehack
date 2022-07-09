@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { View, StyleSheet, StatusBar, Text, Image } from "react-native";
 import { BlueButton, PinkTextInput, Footer } from "../config/reusable";
-import { auth, db } from "../config/firebase";
+import { auth, db } from "../config/Firebase";
+import Colours from "../config/colours";
 
 function SignUp({ navigation }) {
   const [email, setEmail] = useState("");
@@ -54,7 +55,6 @@ function SignUp({ navigation }) {
   return (
     <View style={styles.container}>
       <Image style={styles.img} source={require('../assets/logo.png')} />
-      <Text style={{ fontSize: 20 }}>Hello there!</Text>
       <PinkTextInput
         onChangeText={(val) => setEmail(val)}
         placeholder={"Email"}
@@ -68,7 +68,11 @@ function SignUp({ navigation }) {
         placeholder={"Password"}
         secureTextEntry={true}
       />
-      <BlueButton text={"Sign up"} onPress={() => handleSignUp()} />
+      <BlueButton 
+        text={"SIGN UP"} 
+        style={styles.loginButton}
+        textStyle={styles.loginText}
+        onPress={() => handleSignUp()} />
       <Footer
         desc={"Already have an account?"}
         text={"Log in"}
@@ -80,8 +84,10 @@ function SignUp({ navigation }) {
 
 const styles = StyleSheet.create({
   img: {
-    width: 400,
-    height: 220
+    width: 300,
+    height:200,
+    overflow: 'visible',
+    resizeMode: 'contain',
   },
 
   container: {
@@ -93,5 +99,21 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: 'white'
   },
+  loginButton: {
+    backgroundColor: Colours.middleBlueGreen,
+    paddingHorizontal: 10,
+    marginHorizontal: 5,
+    marginVertical: 25,
+  },
+  loginText: {
+    color: "#fff",
+    fontSize: 20,
+    fontWeight: 'bold',
+    backgroundColor: Colours.middleBlueGreen,
+    paddingVertical: -1, 
+    textAlign: 'center',
+    borderRadius: 900,
+    marginBottom: 0,
+  }
 });
 export default SignUp;

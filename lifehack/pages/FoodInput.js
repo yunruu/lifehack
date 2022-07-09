@@ -8,7 +8,7 @@ import {
   TextInput,
 } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
-import { db, auth } from "../config/firebase.js";
+import { db, auth } from "../config/Firebase.js";
 import DatePicker from 'react-native-datepicker'
 import colours from "../config/colours.js";
 

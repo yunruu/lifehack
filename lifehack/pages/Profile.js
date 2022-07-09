@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { auth, db } from "../config/firebase";
+import { auth, db } from "../config/Firebase";
 import { BlueButton } from "../config/reusable";
 import { StatusBar } from 'expo-status-bar';
 import { View, Text, Button, StyleSheet, Image, TouchableOpacity, SafeAreaView, } from 'react-native';
