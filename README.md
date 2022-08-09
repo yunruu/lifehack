@@ -7,7 +7,7 @@ Our app, Finefood, aims to reduce food waste by reminding users about the expiry
 
 Note: Due to the limited timeframe of 24hr to build this app, we did not create a Figma design and instead use Google slides to discuss the rough design
 
-### To test this application
+## To test this application
 **Prerequisites NodeJS LTS v16.15.0**
 1. Install node and npm on your machine
 2. Clone this repo to your computer
