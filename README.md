@@ -1,5 +1,5 @@
 # lifehack
-Our app, Finefood, aims to reduce food waste by reminding users about the expiry date of the food they purchase. Submitted this for NUS LifeHack 2022. Built with React Native, Expo Client and Firebase.
+Our app, Finefoods, aims to reduce food waste by reminding users about the expiry date of the food they purchase. Submitted this for NUS LifeHack 2022. Built with React Native, Expo Client and Firebase.
 
 ## Documentation
 * [Our DEVPOST submission](https://devpost.com/software/lifehack-l3p6ow)
